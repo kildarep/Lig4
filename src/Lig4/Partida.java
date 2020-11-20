@@ -1,14 +1,14 @@
 package Lig4;
-
+//Classe responsavel pelas verificacoes da partida
 public class Partida {
 
     //Atributos de Partida
     private Jogador jogador1, jogador2, jogadorAtual;
     private Tabuleiro tabuleiro;
-    //Booleana para definir se o jogo ainda está acontecendo
+    //Booleana para definir se o jogo ainda estÃ¡ acontecendo
     private boolean emProgresso = true;
-    //"vencedor" define se há um vencedor e quem
-    //"atual" define quem será o próximo a jogar
+    //"vencedor" define se hÃ¡ um vencedor e quem
+    //"atual" define quem serÃ¡ o prÃ³ximo a jogar
     private int vencedor = 0, atual = 1;
 
     //Getters e Setters
@@ -77,24 +77,24 @@ public class Partida {
         tabuleiro = new Tabuleiro(new int[6][7]);
     }
 
-    //M�todo para realizar a jogada na posi��o recebida
+    //Método para realizar a jogada na posição recebida
     public int fazerJogada(int x) {
         if (x >= 0 && x <= 6) {
-            //Posicionar a pe�a do jogador "atual" na posicao "x"
+            //Posicionar a peça do jogador "atual" na posicao "x"
             int y = tabuleiro.posicionar(x, atual);
             
-            //Se a posi��o for v�lida
+            //Se a posição for válida
             if (y != -1) {
-                //Verificar se h� um ganhador
+                //Verificar se há um ganhador
                 int i = verificar(x, y);
 
-                //Informar em caso de empate ou vit�ria
+                //Informar em caso de empate ou vitória
                 if (i == -1) {
                     System.out.println("Jogo empatado.");
                     return 0;
                 } else {
                     if (i == atual) {
-                        System.out.println("\nVitória de " + jogadorAtual.getNome());
+                        System.out.println("\nVitÃ³ria de " + jogadorAtual.getNome());
                         return 0;
                     }
                 }
@@ -110,12 +110,12 @@ public class Partida {
                 return 1;
             } else {
                 //Informar caso a coluna esteja ocupada
-                System.out.println("\nJogador " + atual + ", a coluna " + x + " está cheia.");
+                System.out.println("\nJogador " + atual + ", a coluna " + x + " estÃ¡ cheia.");
                 return -1;
             }
         } else {
-            //Informar caso a entrada seja inválida
-            System.out.println("\nPor favor, insira um número de 0 a 6");
+            //Informar caso a entrada seja invÃ¡lida
+            System.out.println("\nPor favor, insira um nÃºmero de 0 a 6");
             return -1;
         }
     }
@@ -249,7 +249,7 @@ public class Partida {
         //Percorrendo o tabuleiro
         for (int i = 0; i < tab.length; i++) {
             for (int j = 0; j < tab[1].length; j++) {
-                //Se houver uma posição 0, o jogo ainda está em andamento.
+                //Se houver uma posiÃ§Ã£o 0, o jogo ainda estÃ¡ em andamento.
                 if (tab[i][j] == 0) {
                     return 0;
                 }
